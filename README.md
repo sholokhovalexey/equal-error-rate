@@ -43,7 +43,7 @@ $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
 
 ```math
-\boxed{t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)}
+t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)
 ```
 ```math
 \mathrm{BER}(\pi) = P_\mathrm{error}(\pi, t_\mathrm{Bayes}) = \pi \cdot P_\mathrm{miss}(t_\mathrm{Bayes}(\pi))+(1-\pi) \cdot P_\mathrm{fa}(t_\mathrm{Bayes}(\pi))
@@ -93,7 +93,7 @@ Since $`P_\mathrm{error}(\pi,t) = \pi \cdot P_\mathrm{miss}(t) + (1-\pi) \cdot P
 ```
 Thus, the **minimax solution** is the threshold $`t_∗`$ where the graphs of $`P_\mathrm{fa}(t)`$ and $`P_\mathrm{miss}(t)`$ intersect:
 ```math
-P_\mathrm{fa}(t_∗)=P_\mathrm{miss}(t_∗)
+P_\mathrm{fa}(t_∗) = P_\mathrm{miss}(t_∗)
 ```
 which is precisely the $`\mathrm{EER}`$.
 
@@ -154,7 +154,7 @@ Substituting Back into $`\frac{d}{d \pi} \mathrm{BER}(\pi)`$:
 
 At the **Bayes threshold** $`t_\mathrm{Bayes}(\pi)`$ we have:
 
-$`p(t_\mathrm{Bayes}|Y=1) = \frac{1 - \pi}{\pi} p(t_\mathrm{Bayes}|Y=0)`$
+$`p(t_\mathrm{Bayes}|Y=1) = \left(\frac{1 - \pi}{\pi}\right p(t_\mathrm{Bayes}|Y=0)`$
 
 Substituting this into the derivative:
 ```math
