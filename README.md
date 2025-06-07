@@ -107,6 +107,7 @@ Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 
 <center><img src="fpr_fnr.png" width="500"></center>
 
+In conclusion, if a binary classifier is trained by minimizing the EER (worst-case BER), concavity of BER would insure that error-rates at all the operating points will be pushed down. 
 
 <details open>
 <summary>Validity of the theorem's application</summary>
