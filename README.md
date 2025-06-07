@@ -154,7 +154,7 @@ Substituting Back into $`\frac{d}{d \pi} \mathrm{BER}(\pi)`$:
 
 At the **Bayes threshold** $`t_\mathrm{Bayes}(\pi)`$ we have:
 
-$`p(t_\mathrm{Bayes}|Y=1) = \left(\frac{1 - \pi}{\pi}\right p(t_\mathrm{Bayes}|Y=0)`$
+$`p(t_\mathrm{Bayes}|Y=1) = \left( \frac{1 - \pi}{\pi} \right) p(t_\mathrm{Bayes}|Y=0)`$
 
 Substituting this into the derivative:
 ```math
