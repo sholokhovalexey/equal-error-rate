@@ -43,7 +43,7 @@ $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
 
 ```math
-\fbox{t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)}
+\boxed{t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)}
 ```
 ```math
 \mathrm{BER}(\pi) = P_\mathrm{error}(\pi, t_\mathrm{Bayes}) = \pi \cdot P_\mathrm{miss}(t_\mathrm{Bayes}(\pi))+(1-\pi) \cdot P_\mathrm{fa}(t_\mathrm{Bayes}(\pi))
