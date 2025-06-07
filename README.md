@@ -1,4 +1,4 @@
-**TL;DR: this note illustrates a rearly mentioned property of the equal error rate (ERR) metric in the context of Bayes decision theory and shows its geometric interpretation.**
+**TL;DR: this note illustrates a rearly mentioned property of the equal error rate (EER) metric and shows its geometric interpretation.**
 
 For the interested reader refer to [^1], [^2].
 
