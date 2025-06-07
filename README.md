@@ -44,7 +44,8 @@ $$t_\text{Bayes}(\pi) = \arg \min⁡_{t} P_\text{error}(\pi,t)$$
 
 $$\mathrm{BER}(\pi) = P_\text{error}(\pi, t_\text{Bayes}) = \pi \cdot P_\text{miss}(t_\text{Bayes}(\pi))+(1−\pi) \cdot P_\text{fa}(t_\text{Bayes}(\pi))$$
 
-It is the minimum achievable classification error for a given $\pi$.
+It is the minimum achievable classification error for a given $\pi$ .
+
 
 ## EER is an upper bound of the Bayes error rate 
 
