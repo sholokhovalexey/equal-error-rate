@@ -52,7 +52,7 @@ t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)
 It is the minimum achievable classification error for a given $`\pi`$.
 
 
-## 👉: EER is an upper bound of the Bayes error rate 👈
+## 👉 EER is an upper bound of the Bayes error rate 👈
 
 If the prior $`\pi`$ is **unknown**, we cannot compute $`t_\mathrm{Bayes}`$. Instead, we may seek the **worst-case minimal error**:
 ```math
@@ -67,7 +67,7 @@ The outer maximization finds the prior $`\pi`$ that makes BER as large as possib
 Let's express BER as a dot product
 
 ```math
-P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = \[P_\mathrm{miss}(t), P_\mathrm{fa}(t)\] \cdot \[\pi, 1 - \pi\]
+P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot [\pi, 1 - \pi]
 ```
 To find the wors-case error $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi,t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
 Since a DET curve is convex, the minimum dot product will be achieved at a point $`(P_\mathrm{miss}(t), P_\mathrm{fa}(t))`$ where the hyperplane (line) orthogonal to $`[\pi, 1 - \pi]`$ supports the curve. 
@@ -231,7 +231,7 @@ In 2D case the condition $`\langle Y, B - A \rangle = 0`$ means that the vector 
 
 Let's express BER as a dot product
 ```math
-P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = \[P_\mathrm{miss}(t), P_\mathrm{fa}(t)\] \cdot \[\pi, 1 - \pi\]
+P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot [\pi, 1 - \pi]
 ```
 
 To find the wors-case error
@@ -239,7 +239,7 @@ To find the wors-case error
 \max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t) P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$ which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
+Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$ which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
