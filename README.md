@@ -20,7 +20,7 @@ Let's start from defining a binary classification problem in the framework of Ba
 - **Loss function:** 0-1 loss.
 
 The **Bayes-optimal decision rule** classifies $x$ as class 1 if the **likelihood ratio**:
-$$\frac{p(x∣Y=1)}{p(x∣Y=0)} \geq \frac{1−\pi}{\pi}$$
+$\frac{p(x∣Y=1)}{p(x∣Y=0)} \geq \frac{1−\pi}{\pi}$
 exceeds the **Bayes threshold**: $$t_\text{Bayes}(\pi) = \frac{1−\pi}{\pi}$$
 The total **probability of error** for the given threshold $t$ and prior $\pi$ is:
 $$P_\text{error}(\pi, t) = \pi \cdot P_\text{miss}(t) + (1 - \pi) \cdot P_\text{fa}(t)$$
