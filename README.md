@@ -43,7 +43,7 @@ $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
 
 ```math
-t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)
+\fbox{t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)}
 ```
 ```math
 \mathrm{BER}(\pi) = P_\mathrm{error}(\pi, t_\mathrm{Bayes}) = \pi \cdot P_\mathrm{miss}(t_\mathrm{Bayes}(\pi))+(1-\pi) \cdot P_\mathrm{fa}(t_\mathrm{Bayes}(\pi))
@@ -167,7 +167,7 @@ Substituting this into the derivative:
 
 The **maximum BER** occurs where $`\frac{d}{d \pi} \mathrm{BER}(\pi) = 0`$:
 ```math
-P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi) = 0  \Rightarrow  \boxed{P_\mathrm{miss}(\pi) = P_\mathrm{fa}(\pi)}
+P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi) = 0  \Rightarrow  P_\mathrm{miss}(\pi) = P_\mathrm{fa}(\pi)
 ```
 This is precisely the **Equal Error Rate (EER)** condition.
 
@@ -209,15 +209,14 @@ $`P(\pi) = A + \pi \cdot (B - A)`$,
 where $`\pi`$ is a number between $`0`$ and $`1`$. 
 
 Then, the problem can be formulated as follows:
-```math
-\max_{\pi \in [0,1]}\min_{Y \in C} \langle P(t), Y \rangle
-```
+
+$`\max_{\pi \in [0,1]}\min_{Y \in C} \langle P(t), Y \rangle`$
+
 Since $`C`$ is convex, the minimum dot product over $`Y \in C`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`C`$. 
 
 The objective function for the outer optimization can be re-writte as:
-```math
-f(\pi) = f(P(\pi)) = \min_{Y \in C} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in C} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle
-```
+
+$`f(\pi) = f(P(\pi)) = \min_{Y \in C} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in C} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$
 
 For each fixed $`Y`$, the expression $`\langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$ is a straight line in $`\pi`$. The minimum of a family of straight lines is a **concave** function in $`\pi`$.
 The maximum of $`f(\pi)`$ must occur at a point where the derivative with respect to $`\pi`$ is zero (if such a point exists in $`[0, 1]`$). So, the maximum occurs where $`\langle B - A, Y \rangle = 0`$. 
