@@ -43,7 +43,7 @@ $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
 
 ```math
-t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi,t)
+t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi, t)
 ```
 ```math
 \mathrm{BER}(\pi) = P_\mathrm{error}(\pi, t_\mathrm{Bayes}) = \pi \cdot P_\mathrm{miss}(t_\mathrm{Bayes}(\pi))+(1-\pi) \cdot P_\mathrm{fa}(t_\mathrm{Bayes}(\pi))
@@ -56,10 +56,10 @@ It is the minimum achievable classification error for a given $`\pi`$.
 
 If the prior $`\pi`$ is **unknown**, we cannot compute $`t_\mathrm{Bayes}`$. Instead, we may seek the **worst-case minimal error**:
 ```math
-\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi,t)
+\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-The inner minimization $`\min_t P_\mathrm{error}(\pi,t)`$ yields the **Bayes error rate (BER)** for a given $`\pi`$.
+The inner minimization $`\min_t P_\mathrm{error}(\pi, t)`$ yields the **Bayes error rate (BER)** for a given $`\pi`$.
 The outer maximization finds the prior $`\pi`$ that makes BER as large as possible.
 
 ### Geometric interpretation
@@ -67,9 +67,9 @@ The outer maximization finds the prior $`\pi`$ that makes BER as large as possib
 Let's express BER as a dot product
 
 ```math
-P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot [\pi, 1 - \pi]
+P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [\pi, 1 - \pi] \cdot \begin{bmatrix} P_\mathrm{miss}(t) \\ P_\mathrm{fa}(t) \end{bmatrix}
 ```
-To find the wors-case error $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi,t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
+To find the wors-case error $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
 Since a DET curve is convex, the minimum dot product will be achieved at a point $`(P_\mathrm{miss}(t), P_\mathrm{fa}(t))`$ where the hyperplane (line) orthogonal to $`[\pi, 1 - \pi]`$ supports the curve. 
 
 <center><img src="det_curve.gif" width="1200"></center>
@@ -78,18 +78,18 @@ Since a DET curve is convex, the minimum dot product will be achieved at a point
 ### Derivation using Sion's theorem
 
 By **Sion’s minimax theorem**, if:
-- $`P_\mathrm{error}(\pi,t)`$ is quasi-convex in $`t`$, 
+- $`P_\mathrm{error}(\pi, t)`$ is quasi-convex in $`t`$, 
 - quasi-concave (or linear) in $`\pi`$,
   
 then it is possible to **swap** maximization and minimization:
 ```math
-\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi,t) = \min_{t} \max_{\pi \in [0,1]} P_\mathrm{error}(\pi, t)
+\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t) = \min_{t} \max_{\pi \in [0,1]} P_\mathrm{error}(\pi, t)
 ```
-The right-hand side $`\min_{t} \max_{\pi \in [0,1]} P_\mathrm{error}(\pi,t)`$ asks: for a **fixed threshold** $`t`$, what is the **worst** $`\pi`$?
+The right-hand side $`\min_{t} \max_{\pi \in [0,1]} P_\mathrm{error}(\pi, t)`$ asks: for a **fixed threshold** $`t`$, what is the **worst** $`\pi`$?
  
-Since $`P_\mathrm{error}(\pi,t) = \pi \cdot P_\mathrm{miss}(t) + (1-\pi) \cdot P_\mathrm{fa}(t)`$, it is **linear in $`\pi`$**, the maximum occurs at $`\pi = 0`$ or $`\pi = 1`$, depending on whether $`P_\mathrm{fa}(t)>P_\mathrm{miss}(t)`$:
+Since $`P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1-\pi) \cdot P_\mathrm{fa}(t)`$, it is **linear in $`\pi`$**, the maximum occurs at $`\pi = 0`$ or $`\pi = 1`$, depending on whether $`P_\mathrm{fa}(t)>P_\mathrm{miss}(t)`$:
 ```math
-\max_{\pi \in [0,1]} P_\mathrm{error}(\pi,t) = \max(P_\mathrm{fa}(t), P_\mathrm{miss}(t))
+\max_{\pi \in [0,1]} P_\mathrm{error}(\pi, t) = \max(P_\mathrm{fa}(t), P_\mathrm{miss}(t))
 ```
 Thus, the **minimax solution** is the threshold $`t_∗`$ where the graphs of $`P_\mathrm{fa}(t)`$ and $`P_\mathrm{miss}(t)`$ intersect:
 ```math
@@ -109,7 +109,7 @@ Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 <details open>
 <summary>Validity of the theorem's application</summary>
 <br>
-BER can be written as follows: $`\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t) \right)`$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
+BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t) \right)$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
 </details>
 
 
