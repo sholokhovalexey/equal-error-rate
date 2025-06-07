@@ -19,7 +19,8 @@ Let's start from defining a binary classification problem in the framework of Ba
   $P(Y=1) = \pi$,
   $P(Y=0) = 1 − \pi$.
 - **Class-conditional densities:**
-  $p(x∣Y=1)$, $p(x∣Y=0)$.
+  $p(x∣Y=1)$,
+  $p(x∣Y=0)$.
 - **Loss function:** 0-1 loss.
 
 The **Bayes-optimal decision rule** classifies $x$ as class 1 if the **likelihood ratio**:
@@ -38,8 +39,11 @@ FRR (False Negative Rate):
 $P_\text{miss}(t)=\int_{-\infty}^{t}p(x∣Y=1) dx$
 
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $t_\text{Bayes}$ that minimizes $P_\text{error}$:
+
 $$t_\text{Bayes}(\pi) = \arg \min⁡_{t} P_\text{error}(\pi,t)$$
+
 $$\mathrm{BER}(\pi) = P_\text{error}(\pi, t_\text{Bayes}) = \pi \cdot P_\text{miss}(t_\text{Bayes}(\pi))+(1−\pi) \cdot P_\text{fa}(t_\text{Bayes}(\pi))$$
+
 It is the minimum achievable classification error for a given $\pi$.
 
 ## EER is an upper bound of the Bayes error rate 
