@@ -118,7 +118,7 @@ BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_
 
 ### Alternative derivation by differentiating the Bayes error rate
 
-We derive the **Equal Error Rate (EER)** as the **worst-case Bayes error** by analyzing how the **Bayes-optimal decision threshold** affects the **False Acceptance Rate (FAR)** and **False Rejection Rate (FRR)** as the **class prior probability** $`\pi`$ varies. 
+We derive the **Equal Error Rate (EER)** as the **worst-case Bayes error** by analyzing how the **Bayes-optimal decision threshold** affects the FAR and FRR as the class prior probability $`\pi`$ varies. 
 
 We seek the prior $`\pi`$ that **maximizes BER**, i.e., the worst-case scenario where the classifier performs the poorest.
 
@@ -197,7 +197,7 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 <summary>Minimizing a dot product over a convex set</summary>
 <br>
 
-**Problem**. Consider a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.
+\textit{Consider a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.}
 
 Let's start from expressing $`P`$ as:
 $`P(\pi) = A + \pi \cdot (B - A)`$, 
