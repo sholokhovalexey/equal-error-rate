@@ -18,17 +18,24 @@ Let's start from defining a binary classification problem in the framework of Ba
 - **Class prior:**
   $P(Y=1) = \pi$,
   $P(Y=0) = 1 − \pi$.
-- **Class-conditional densities:** $p(x∣Y=1)$, $p(x∣Y=0)$.
+- **Class-conditional densities:**
+  $p(x∣Y=1)$, $p(x∣Y=0)$.
 - **Loss function:** 0-1 loss.
 
 The **Bayes-optimal decision rule** classifies $x$ as class 1 if the **likelihood ratio**:
 $\frac{p(x∣Y=1)}{p(x∣Y=0)} \geq \frac{1−\pi}{\pi}$
-exceeds the **Bayes threshold**: $$t_\text{Bayes}(\pi) = \frac{1−\pi}{\pi}$$
+exceeds the **Bayes threshold**: 
+$t_\text{Bayes}(\pi) = \frac{1−\pi}{\pi}$
+
 The total **probability of error** for the given threshold $t$ and prior $\pi$ is:
-$$P_\text{error}(\pi, t) = \pi \cdot P_\text{miss}(t) + (1 - \pi) \cdot P_\text{fa}(t)$$
+
+$P_\text{error}(\pi, t) = \pi \cdot P_\text{miss}(t) + (1 - \pi) \cdot P_\text{fa}(t)$
+
 where 
-FAR (False Positive Rate): $P_\text{fa}(t)=\int_{t}^{\infty}p(x∣Y=0) dx$
-FRR (False Negative Rate): $P_\text{miss}(t)=\int_{-\infty}^{t}p(x∣Y=1) dx$
+FAR (False Positive Rate): 
+$P_\text{fa}(t)=\int_{t}^{\infty}p(x∣Y=0) dx$
+FRR (False Negative Rate): 
+$P_\text{miss}(t)=\int_{-\infty}^{t}p(x∣Y=1) dx$
 
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $t_\text{Bayes}$ that minimizes $P_\text{error}$:
 $$t_\text{Bayes}(\pi) = \arg \min⁡_{t} P_\text{error}(\pi,t)$$
