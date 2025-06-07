@@ -131,11 +131,7 @@ $`\frac{d}{d \pi}P_\mathrm{miss}(\pi) = \left. \frac{d P_\mathrm{miss}}{dt} \rig
 
 Derivatives of $`P_\mathrm{fa}`$ and $`P_\mathrm{miss}`$:
 
-Since $`P_\mathrm{fa}(t) = \int_{t}^{\infty} p(x|Y=0)dx`$, we have:
-
 $`\frac{dP_\mathrm{fa}}{dt} = -p(t|Y=0)`$
-
-Since $`P_\mathrm{miss}(t) = \int_{-\infty}^{t} p(x|Y=1)dx`$, we have:
 
 $`\frac{dP_\mathrm{miss}}{dt} = p(t|Y=1)`$
 
@@ -143,7 +139,7 @@ Derivative of the Bayes threshold $`t_\mathrm{Bayes}(\pi)`$:
 
 $`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi} \Rightarrow \frac{d t_\mathrm{Bayes}}{d\pi} = - \left( \frac{1}{\pi^2} \right)`$
 
-Substituting Back into $`\frac{d}{d \pi} \mathrm{BER}(\pi)`$:
+Substituting back into $`\frac{d}{d \pi} \mathrm{BER}(\pi)`$:
 
 ```math
 \begin{aligned}
