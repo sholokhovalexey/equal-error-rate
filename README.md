@@ -98,9 +98,9 @@ P_\mathrm{fa}(t_∗) = P_\mathrm{miss}(t_∗)
 which is precisely the $`\mathrm{EER}`$.
 
 Given that the **maximin = minimax**, we have:
-
-$`\underbrace{\max_{\pi}\mathrm{BER}(\pi)}_\text{worst-case BER} = \underbrace{\mathrm{EER}}_\text{minimax error}`$
-
+```math
+\underbrace{\max_{\pi}\mathrm{BER}(\pi)}_\text{worst-case BER} = \underbrace{\mathrm{EER}}_\text{minimax error}
+```
 Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 
 <center><img src="fpr_fnr.png" width="500"></center>
@@ -125,19 +125,19 @@ Differentiating BER with respect to $`\pi`$:
 ```
 Using the chain rule on FAR and FRR and since $`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi}`$, we compute:
 
-$`\frac{d}{d \pi} P_\mathrm{fa}(\pi) = \frac{dP_\mathrm{fa}}{dt} \cdot \frac{dt_\mathrm{Bayes}}{d\pi}`$
+$`\frac{d}{d \pi} P_\mathrm{fa}(\pi) = \frac{d P_\mathrm{fa}}{dt} \Bigr|_{t=tt} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
 
-$`\frac{d}{d \pi}P_\mathrm{miss}(\pi) = \frac{dP_\mathrm{miss}}{dt} \cdot \frac{dt_\mathrm{Bayes}}{d\pi}`$
+$`\frac{d}{d \pi}P_\mathrm{miss}(\pi) = \frac{d P_\mathrm{miss}}{dt} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
 
 Derivatives of $`P_\mathrm{fa}`$ and $`P_\mathrm{miss}`$:
 
-Since $`P_\mathrm{fa}(t) = \int_{t}^{\infty}p(x|Y=0)dx`$, we have:
+Since $`P_\mathrm{fa}(t) = \int_{t}^{\infty} p(x|Y=0)dx`$, we have:
 
-$`\frac{dP_\mathrm{fa}}{dt}=-p(t|Y=0)`$
+$`\frac{dP_\mathrm{fa}}{dt} = -p(t|Y=0)`$
 
-Since $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$, we have:
+Since $`P_\mathrm{miss}(t) = \int_{-\infty}^{t} p(x|Y=1)dx`$, we have:
 
-$`\frac{dP_\mathrm{miss}}{dt}=p(t|Y=1)`$
+$`\frac{dP_\mathrm{miss}}{dt} = p(t|Y=1)`$
 
 Derivative of the Bayes threshold $`t_\mathrm{Bayes}(\pi)`$:
 
@@ -156,13 +156,9 @@ At the **Bayes threshold** $`t_\mathrm{Bayes}(\pi)`$ we have:
 
 $`p(t_\mathrm{Bayes}|Y=1) = \left( \frac{1 - \pi}{\pi} \right) p(t_\mathrm{Bayes}|Y=0)`$
 
-Substituting this into the derivative:
+Substituting this into the derivative we get:
 ```math
-\begin{aligned}
-\frac{d}{d \pi }\mathrm{BER}(\pi) = P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi)-\frac{(\frac{1 - \pi}{\pi}p(t_\mathrm{Bayes}|Y=0))}{\pi} + (1-\pi) \frac{p(t_\mathrm{Bayes}|Y=0)}{\pi^2} \\
-= P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi)-(1 - \pi)\frac{p(t_\mathrm{Bayes}|Y=0)}{\pi^2} + (1-\pi) \frac{p(t_\mathrm{Bayes}|Y=0)}{\pi^2} \\
-= P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi) \\
-\end{aligned}
+\frac{d}{d \pi }\mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) \\
 ```
 
 The **maximum BER** occurs where $`\frac{d}{d \pi} \mathrm{BER}(\pi) = 0`$:
@@ -177,7 +173,7 @@ This is precisely the **Equal Error Rate (EER)** condition.
 <br>
 To confirm this is a **maximum**, we check the second derivative:
     
-$`\frac{d^2}{d\pi^2} \mathrm{BER}(\pi) = \frac{d}{d \pi}(P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi))`$
+$`\frac{d^2}{d\pi^2} \mathrm{BER}(\pi) = \frac{d}{d \pi}(P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi))`$
 
 From earlier:
 
@@ -226,7 +222,7 @@ In 2D case the condition $`\langle Y, B - A \rangle = 0`$ means that the vector 
 </details>
 
 
-##### Relation to the EER 
+##### Relation to EER 
 
 Let's express BER as a dot product
 ```math
