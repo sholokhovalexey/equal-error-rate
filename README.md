@@ -112,7 +112,9 @@ This means: if a binary classifier is trained by minimizing the EER (worst-case 
 <details open>
 <summary>Validity of the theorem's application</summary>
 <br>
+<span style="color:red">
 BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t) \right)$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
+</span>
 </details>
 
 
