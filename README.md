@@ -95,7 +95,7 @@ which is precisely the $`\mathrm{EER}`$.
 
 Given that the **maximin = minimax**, we have:
 
-$`\underbrace{\max_{\pi}\mathrm{BER}(\pi)}_\mathrm{Worst-case BER}=\underbrace{\mathrm{EER}}_\mathrm{Minimax error}`$
+$`\underbrace{\max_{\pi}\mathrm{BER}(\pi)}_\text{Worst-case BER}=\underbrace{\mathrm{EER}}_\text{Minimax error}`$
 
 Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 
@@ -231,7 +231,7 @@ $$\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi,t)$$
 
 Let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details).
 
-That is, the inner minimization over the convex set can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t) P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$ which is exactly the EER point $`(EER, EER)`$.
+That is, the inner minimization over the convex set can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t) P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$ which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
