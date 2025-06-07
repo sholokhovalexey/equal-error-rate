@@ -15,7 +15,7 @@ Unlike accuracy, EER is less sensitive to class imbalance because it focuses on 
 ### Background
 
 Let's start from defining a binary classification problem in the framework of Bayes decision theory:
-- **Class prior:** $P(Y=1) = \pi$, $P(Y=0) = 1− \pi$.
+- **Class prior:** $$P(Y=1) = \pi$$, $$P(Y=0) = 1 − \pi$$.
 - **Class-conditional densities:** $p(x∣Y=1)$, $p(x∣Y=0)$.
 - **Loss function:** 0-1 loss.
 
@@ -198,16 +198,12 @@ To find the wors-case error
 
 $$\max_{⁡\pi \in [0,1]} \min⁡_{t} P_\text{error}(\pi,t)$$
 
-Let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary. 
+Let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details).
 
 That is, the inner minimization over the convex set can be replaced by minimization over a scalar $t$. For a fixed $t$, we seek the point $(P_\text{fa}(t) P_\text{miss}(t)$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $P = (\pi, 1-\pi)$ on a line segment between the points $(0, 1)$ and $(1, 0)$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $(1, 1)$ which is exactly the EER point $(EER,EER)$.
 
 
-<details open>
-<summary>On convexity of DET (ROC) curves</summary>
-<br>
-See [^3], [^4] for details.
-</details>
+
 
 
 ## References
