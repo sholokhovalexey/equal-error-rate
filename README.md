@@ -71,7 +71,7 @@ Let's express BER as a dot product
 ```math
 P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [\pi, 1 - \pi] \cdot \begin{bmatrix} P_\mathrm{miss}(t) \\ P_\mathrm{fa}(t) \end{bmatrix}
 ```
-To find the worst-case error, $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
+To find the worst-case error, $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)`$, let's first note that the theoretical DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
 Since a DET curve is convex, the minimum dot product will be achieved at a point $`(P_\mathrm{miss}(t), P_\mathrm{fa}(t))`$ where the hyperplane (line) orthogonal to $`[\pi, 1 - \pi]`$ supports the curve. 
 
 <center><img src="det_curve.gif" width="1200"></center>
@@ -196,7 +196,7 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 <summary>Minimizing a dot product over a convex set</summary>
 <br>
 
-Let's have a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.
+**Problem**. Consider a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.
 
 Let's start from expressing $`P`$ as:
 $`P(\pi) = A + \pi \cdot (B - A)`$, 
@@ -232,7 +232,7 @@ To find the worst-case error
 \max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches the general result obtained before and allows us to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
+Let's recall that a theoretical DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches the general result obtained before and allows us to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
