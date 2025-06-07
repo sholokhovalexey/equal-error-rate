@@ -125,9 +125,9 @@ Differentiating BER with respect to $`\pi`$:
 ```
 Using the chain rule on FAR and FRR and since $`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi}`$, we compute:
 
-$`\frac{d}{d \pi} P_\mathrm{fa}(\pi) = \frac{d P_\mathrm{fa}}{dt} \Bigr|_{t=tt} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
+$`\frac{d}{d \pi} P_\mathrm{fa}(\pi) = \frac{d P_\mathrm{fa}}{dt} \right|_{t=t_\mathrm{Bayes}} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
 
-$`\frac{d}{d \pi}P_\mathrm{miss}(\pi) = \frac{d P_\mathrm{miss}}{dt} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
+$`\frac{d}{d \pi}P_\mathrm{miss}(\pi) = \frac{d P_\mathrm{miss}}{dt} \right|_{t=t_\mathrm{Bayes}} \cdot \frac{d t_\mathrm{Bayes}}{d\pi}`$
 
 Derivatives of $`P_\mathrm{fa}`$ and $`P_\mathrm{miss}`$:
 
