@@ -23,7 +23,7 @@ Let's start from defining a binary classification problem in the framework of Ba
   $p(x∣Y=0)$.
 - **Loss function:** 0-1 loss.
 
-The **Bayes-optimal decision rule** classifies $x$ as class 1 if the **likelihood ratio**:
+The **Bayes-optimal decision rule** classifies $`x`$ as class 1 if the **likelihood ratio**:
 $\frac{p(x∣Y=1)}{p(x∣Y=0)} \geq \frac{1−\pi}{\pi}$
 exceeds the **Bayes threshold**: 
 $t_\text{Bayes}(\pi) = \frac{1−\pi}{\pi}$
@@ -34,9 +34,9 @@ $P_\text{error}(\pi, t) = \pi \cdot P_\text{miss}(t) + (1 - \pi) \cdot P_\text{f
 
 where 
 FAR (False Positive Rate): 
-$P_\text{fa}(t)=\int_{t}^{\infty}p(x∣Y=0) dx$
+$P_\text{fa}(t) = \int_{t}^{\infty}p(x∣Y=0)dx$
 FRR (False Negative Rate): 
-$P_\text{miss}(t)=\int_{-\infty}^{t}p(x∣Y=1) dx$
+$P_\text{miss}(t) = \int_{-\infty}^{t}p(x∣Y=1)dx$
 
 The **Bayes error rate (BER)** is obtained at the **optimal threshold** $t_\text{Bayes}$ that minimizes $P_\text{error}$:
 
