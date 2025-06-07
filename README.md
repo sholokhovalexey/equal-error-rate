@@ -15,7 +15,9 @@ Unlike accuracy, EER is less sensitive to class imbalance because it focuses on 
 ### Background
 
 Let's start from defining a binary classification problem in the framework of Bayes decision theory:
-- **Class prior:** $$P(Y=1) = \pi$$, $$P(Y=0) = 1 − \pi$$.
+- **Class prior:**
+  $P(Y=1) = \pi$,
+  $P(Y=0) = 1 − \pi$.
 - **Class-conditional densities:** $p(x∣Y=1)$, $p(x∣Y=0)$.
 - **Loss function:** 0-1 loss.
 
