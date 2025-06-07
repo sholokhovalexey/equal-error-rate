@@ -109,7 +109,7 @@ Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 <details open>
 <summary>Validity of the theorem's application</summary>
 <br>
-BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t}(\pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t))$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
+BER can be written as follows: $`\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t) \right)`$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
 </details>
 
 
@@ -121,7 +121,7 @@ We seek the prior $`\pi`$ that **maximizes BER**, i.e., the worst-case scenario 
 
 Differentiating BER with respect to $`\pi`$:
 ```math
-\frac{d}{d \pi} \mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) + \pi \frac{d}{d \pi} P_\mathrm{miss}(\pi) + (1 - \pi) \frac{d}{d \pi} P_\mathrm{fa}(\pi)
+\frac{d}{d \pi} \mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) + \pi \cdot \frac{d}{d \pi} P_\mathrm{miss}(\pi) + (1 - \pi) \cdot \frac{d}{d \pi} P_\mathrm{fa}(\pi)
 ```
 Using the chain rule on FAR and FRR and since $`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi}`$, we compute:
 
@@ -141,13 +141,13 @@ $`\frac{dP_\mathrm{miss}}{dt}=p(t|Y=1)`$
 
 Derivative of the Bayes threshold $`t_\mathrm{Bayes}(\pi)`$:
 
-$`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi} \Rightarrow \frac{d t_\mathrm{Bayes}}{d\pi}=-\frac{1}{\pi^2}`$
+$`t_\mathrm{Bayes}(\pi) = \frac{1 - \pi}{\pi} \Rightarrow \frac{d t_\mathrm{Bayes}}{d\pi} = - \left( \frac{1}{\pi^2} \right)`$
 
 Substituting Back into $`\frac{d}{d \pi} \mathrm{BER}(\pi)`$:
 
 ```math
 \begin{aligned}
-\frac{d}{d \pi} \mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) + \pi(p(t_\mathrm{Bayes}|Y=1) \cdot (-\frac{1}{\pi^2})) + (1-\pi)(-p(t_\mathrm{Bayes}|Y=0) \cdot (-\frac{1}{\pi^2}))\\
+\frac{d}{d \pi} \mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) + \pi \cdot \left( p(t_\mathrm{Bayes}|Y=1) \cdot \left(-\frac{1}{\pi^2} \right) \right) + (1 - \pi) \cdot \left( -p(t_\mathrm{Bayes}|Y=0) \cdot \left(-\frac{1}{\pi^2} \right) \right) \\
 = P_\mathrm{miss}(\pi)-P_\mathrm{fa}(\pi) - \frac{p(t_\mathrm{Bayes}|Y=1)}{\pi} + (1-\pi) \frac{p(t_\mathrm{Bayes}|Y=0)}{\pi^2} \\
 \end{aligned}
 ```
@@ -230,7 +230,7 @@ In 2D case the condition $`\langle Y, B - A \rangle = 0`$ means that the vector 
 
 Let's express BER as a dot product
 ```math
-P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot [\pi, 1 - \pi]
+P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot \begin{bmatrix} \pi \\ 1 - \pi \end{bmatrix}
 ```
 
 To find the wors-case error
@@ -238,7 +238,7 @@ To find the wors-case error
 \max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$ which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
+Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
