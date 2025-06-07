@@ -1,6 +1,6 @@
 **TL;DR: this note illustrates a rearly mentioned property of the equal error rate (EER) metric and shows its geometric interpretation.**
 
-For the interested reader refer to [^1], [^2].
+For the interested reader, refer to [^1], [^2].
 
 ## Definition
 The **Equal Error Rate (EER)** is a performance metric commonly used to evaluate binary classifiers. 
@@ -26,7 +26,9 @@ Let's start from defining a binary classification problem in the framework of Ba
 
 The **Bayes-optimal decision rule** classifies $`x`$ as class 1 if the **likelihood ratio** exceeds the **Bayes threshold**:
 
-$`\frac{p(x|Y=1)}{p(x|Y=0)} \geq t_\mathrm{Bayes}(\pi) = \frac{1-\pi}{\pi}`$
+```math
+\frac{p(x|Y=1)}{p(x|Y=0)} \geq t_\mathrm{Bayes}(\pi) = \frac{1-\pi}{\pi}
+```
 
 The total **probability of error** for the given threshold $`t`$ and prior $`\pi`$ is:
 ```math
@@ -69,7 +71,7 @@ Let's express BER as a dot product
 ```math
 P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [\pi, 1 - \pi] \cdot \begin{bmatrix} P_\mathrm{miss}(t) \\ P_\mathrm{fa}(t) \end{bmatrix}
 ```
-To find the wors-case error $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
+To find the worst-case error, $`\max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)`$, let's first note that the DET (or ROC) curve forms a convex set and serves as its boundary (see [^3], [^4] for details). 
 Since a DET curve is convex, the minimum dot product will be achieved at a point $`(P_\mathrm{miss}(t), P_\mathrm{fa}(t))`$ where the hyperplane (line) orthogonal to $`[\pi, 1 - \pi]`$ supports the curve. 
 
 <center><img src="det_curve.gif" width="1200"></center>
@@ -152,7 +154,7 @@ At the **Bayes threshold** $`t_\mathrm{Bayes}(\pi)`$ we have:
 
 $`p(t_\mathrm{Bayes}|Y=1) = \left( \frac{1 - \pi}{\pi} \right) p(t_\mathrm{Bayes}|Y=0)`$
 
-Substituting this into the derivative we get:
+Substituting this into the derivative, we get:
 ```math
 \frac{d}{d\pi}\mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi)
 ```
@@ -194,7 +196,7 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 <summary>Minimizing a dot product over a convex set</summary>
 <br>
 
-Let have a convext set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.
+Let's have a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.
 
 Let's start from expressing $`P`$ as:
 $`P(\pi) = A + \pi \cdot (B - A)`$, 
@@ -206,14 +208,14 @@ $`\max_{\pi \in [0,1]}\min_{Y \in C} \langle P(t), Y \rangle`$
 
 Since $`C`$ is convex, the minimum dot product over $`Y \in C`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`C`$. 
 
-The objective function for the outer optimization can be re-writte as:
+The objective function for the outer optimization can be rewritten as:
 
 $`f(\pi) = f(P(\pi)) = \min_{Y \in C} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in C} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$
 
 For each fixed $`Y`$, the expression $`\langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$ is a straight line in $`\pi`$. The minimum of a family of straight lines is a **concave** function in $`\pi`$.
 The maximum of $`f(\pi)`$ must occur at a point where the derivative with respect to $`\pi`$ is zero (if such a point exists in $`[0, 1]`$). So, the maximum occurs where $`\langle B - A, Y \rangle = 0`$. 
 
-In 2D case the condition $`\langle Y, B - A \rangle = 0`$ means that the vector $`Y`$ is perpendicular to the line $`AB`$. 
+In the 2D case, the condition $`\langle Y, B - A \rangle = 0`$ means that the vector $`Y`$ is perpendicular to the line $`AB`$. 
 
 </details>
 
@@ -225,12 +227,12 @@ Let's express BER as a dot product
 P_\mathrm{error}(\pi, t) = \pi \cdot P_\mathrm{miss}(t) + (1 - \pi) \cdot P_\mathrm{fa}(t) = [P_\mathrm{miss}(t), P_\mathrm{fa}(t)] \cdot \begin{bmatrix} \pi \\ 1 - \pi \end{bmatrix}
 ```
 
-To find the wors-case error
+To find the worst-case error
 ```math
 \max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches to the general result obtained before and allows to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
+Let's recall that a DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches the general result obtained before and allows us to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
