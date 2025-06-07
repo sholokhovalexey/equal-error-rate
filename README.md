@@ -109,12 +109,14 @@ Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 
 This means: if a binary classifier is trained by minimizing the EER (worst-case BER), concavity of BER would insure that error-rates at all the operating points will be pushed down. 
 
+<span style="color:red">
+Text content
+</span>
+
 <details open>
 <summary>Validity of the theorem's application</summary>
 <br>
-<span style="color:red">
 BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_\mathrm{miss}(t)+(1-\pi) \cdot P_\mathrm{fa}(t) \right)$. The pointwise minimum of linear functions is quasi-convex (since linear functions are convex and their minimum preserves quasi-convexity). This ensures that Sion’s theorem applies, allowing us to swap the min and max.
-</span>
 </details>
 
 
