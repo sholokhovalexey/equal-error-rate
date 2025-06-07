@@ -154,7 +154,7 @@ $`p(t_\mathrm{Bayes}|Y=1) = \left( \frac{1 - \pi}{\pi} \right) p(t_\mathrm{Bayes
 
 Substituting this into the derivative we get:
 ```math
-\frac{d}{d \pi }\mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi) \\
+\frac{d}{d\pi}\mathrm{BER}(\pi) = P_\mathrm{miss}(\pi) - P_\mathrm{fa}(\pi)
 ```
 
 The **maximum BER** occurs where $`\frac{d}{d \pi} \mathrm{BER}(\pi) = 0`$:
