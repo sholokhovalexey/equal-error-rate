@@ -6,7 +6,7 @@ For the interested reader, refer to [^1], [^2].
 The **Equal Error Rate (EER)** is a performance metric commonly used to evaluate binary classifiers. 
 The EER is defined as the point where the **False Acceptance Rate (FAR)** and **False Rejection Rate (FRR)** are equal, providing a single scalar value that balances the two types of errors.
 
-The EER can be derived from the **Receiver Operating Characteristic (ROC)** or from the **Detection Error Tradeoff (DET)** curves. It is defined as the point on the curve for which 
+The EER can be derived from the [**Receiver Operating Characteristic (ROC)**](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) or from the [**Detection Error Tradeoff (DET)**](https://en.wikipedia.org/wiki/Detection_error_tradeoff) curves. It is defined as the point on the curve for which 
 (FAR, FRR) = (EER, EER).
 
 <center><img src="roc_eer.png" width="500"></center>
@@ -42,7 +42,7 @@ $`P_\mathrm{fa}(t) = \int_{t}^{\infty}p(x|Y=0)dx`$
 **FRR (False Rejection Rate)**: 
 $`P_\mathrm{miss}(t) = \int_{-\infty}^{t}p(x|Y=1)dx`$
 
-The **Bayes error rate (BER)** is obtained at the **optimal threshold** $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
+The [**Bayes error rate (BER)**](https://en.wikipedia.org/wiki/Bayes_error_rate) is obtained at the [**optimal threshold**](https://en.wikipedia.org/wiki/Bayes_classifier) $`t_\mathrm{Bayes}`$ that minimizes $`P_\mathrm{error}`$:
 
 ```math
 t_\mathrm{Bayes}(\pi) = \arg \min_{t} P_\mathrm{error}(\pi, t)
@@ -79,8 +79,8 @@ Since a DET curve is convex, the minimum dot product will be achieved at a point
 
 ### Derivation using Sion's theorem
 
-By **Sion’s minimax theorem**, if:
-- $`P_\mathrm{error}(\pi, t)`$ is quasi-convex in $`t`$, 
+By [**Sion’s minimax theorem**](https://en.wikipedia.org/wiki/Minimax_theorem), if:
+- $`P_\mathrm{error}(\pi, t)`$ is [quasi-convex](https://en.wikipedia.org/wiki/Quasiconvex_function) in $`t`$, 
 - quasi-concave (or linear) in $`\pi`$,
   
 then it is possible to **swap** maximization and minimization:
@@ -107,7 +107,7 @@ Hence, **EER is the worst-case Bayes error when the prior $`\pi`$ is unknown**.
 
 <center><img src="fpr_fnr.png" width="500"></center>
 
-In conclusion, if a binary classifier is trained by minimizing the EER (worst-case BER), concavity of BER would insure that error-rates at all the operating points will be pushed down. 
+This means: if a binary classifier is trained by minimizing the EER (worst-case BER), concavity of BER would insure that error-rates at all the operating points will be pushed down. 
 
 <details open>
 <summary>Validity of the theorem's application</summary>
@@ -118,9 +118,7 @@ BER can be written as follows: $\mathrm{BER}(\pi) = \min_{t} \left( \pi \cdot P_
 
 ### Alternative derivation by differentiating the Bayes error rate
 
-We derive the **Equal Error Rate (EER)** as the **worst-case Bayes error** by analyzing how the **Bayes-optimal decision threshold** affects the FAR and FRR as the class prior probability $`\pi`$ varies. 
-
-We seek the prior $`\pi`$ that **maximizes BER**, i.e., the worst-case scenario where the classifier performs the poorest.
+We derive the **Equal Error Rate (EER)** as the **worst-case Bayes error rate** and seek the prior $`\pi`$ that maximizes BER.
 
 Differentiating BER with respect to $`\pi`$:
 ```math
@@ -197,7 +195,7 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 <summary>Minimizing a dot product over a convex set</summary>
 <br>
 
-*Consider a convex set $`C`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ belonging to the set $`C`$. Find a point $`P`$ that maximizes $`f(P)`$.*
+*Consider a convex set $`\mathcal{C}`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ from the set $`\mathcal{C}`$. Find a point $`P`$ that maximizes $`f(P)`$.*
 
 Let's start from expressing $`P`$ as:
 $`P(\pi) = A + \pi \cdot (B - A)`$, 
@@ -205,13 +203,15 @@ where $`\pi`$ is a number between $`0`$ and $`1`$.
 
 Then, the problem can be formulated as follows:
 
-$`\max_{\pi \in [0,1]}\min_{Y \in C} \langle P(t), Y \rangle`$
+$`\max_{\pi \in [0,1]}\min_{Y \in \mathcal{C}} \langle P(t), Y \rangle`$
 
-Since $`C`$ is convex, the minimum dot product over $`Y \in C`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`C`$. 
+Since $`\mathcal{C}`$ is convex, the minimum dot product over $`Y \in \mathcal{C}`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`\mathcal{C}`$. 
+
+<center><img src="lp.png" width="500"></center>
 
 The objective function for the outer optimization can be rewritten as:
 
-$`f(\pi) = f(P(\pi)) = \min_{Y \in C} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in C} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$
+$`f(\pi) = f(P(\pi)) = \min_{Y \in \mathcal{C}} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in \mathcal{C}} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$
 
 For each fixed $`Y`$, the expression $`\langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$ is a straight line in $`\pi`$. The minimum of a family of straight lines is a **concave** function in $`\pi`$.
 The maximum of $`f(\pi)`$ must occur at a point where the derivative with respect to $`\pi`$ is zero (if such a point exists in $`[0, 1]`$). So, the maximum occurs where $`\langle B - A, Y \rangle = 0`$. 
@@ -233,7 +233,7 @@ To find the worst-case error
 \max_{\pi \in [0,1]} \min_{t} P_\mathrm{error}(\pi, t)
 ```
 
-Let's recall that a theoretical DET (or ROC) curve is convex (concave). Hence, the inner minimization over its epigraph (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t)`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches the general result obtained before and allows us to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
+Let's recall that a theoretical DET (or ROC) curve is convex (concave). Hence, the inner minimization over its [epigraph](https://en.wikipedia.org/wiki/Epigraph_(mathematics)) (convex set) can be replaced by minimization over a scalar $`t`$. For a fixed $`t`$, we seek the point $`(P_\mathrm{fa}(t), P_\mathrm{miss}(t))`$ on the DET curve that minimizes this dot product. The outer maximization can be seen as finding a point $`P = (\pi, 1 - \pi)`$ on a line segment between the points $`(0, 1)`$ and $`(1, 0)`$. This formulation matches the general result obtained before and allows us to conclude that the optimal point is on the intersection of the DET curve with the line along the direction $`(1, 1)`$, which is exactly the EER point $`(\mathrm{EER}, \mathrm{EER})`$.
 
 
 
