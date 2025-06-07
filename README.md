@@ -35,6 +35,7 @@ $P_\text{error}(\pi, t) = \pi \cdot P_\text{miss}(t) + (1 - \pi) \cdot P_\text{f
 where 
 FAR (False Positive Rate): 
 $P_\text{fa}(t) = \int_{t}^{\infty}p(x∣Y=0)dx$
+
 FRR (False Negative Rate): 
 $P_\text{miss}(t) = \int_{-\infty}^{t}p(x∣Y=1)dx$
 
@@ -44,13 +45,15 @@ $$t_\text{Bayes}(\pi) = \arg \min⁡_{t} P_\text{error}(\pi,t)$$
 
 $$\mathrm{BER}(\pi) = P_\text{error}(\pi, t_\text{Bayes}) = \pi \cdot P_\text{miss}(t_\text{Bayes}(\pi))+(1−\pi) \cdot P_\text{fa}(t_\text{Bayes}(\pi))$$
 
-It is the minimum achievable classification error for a given $`\pi`$.
+It is the minimum achievable classification error for a given $$\pi$$.
 
 
 ## EER is an upper bound of the Bayes error rate 
 
 If the prior $\pi$ is **unknown**, we cannot compute $t_\text{Bayes}$. Instead, we may seek the **worst-case minimal error**:
+
 $$\max_{⁡\pi \in [0,1]} \min⁡_{t} P_\text{error}(\pi,t)$$
+
 The inner minimization $\min⁡_t P_\text{error}(\pi,t)$ yields the **Bayes error rate (BER)** for a given $\pi$.
 The outer maximization finds the prior $\pi$ that makes BER as large as possible.
 
