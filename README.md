@@ -192,10 +192,8 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 
 #### Geometric interpretation
 
-##### General result
-
 <details open>
-<summary>Minimizing a dot product over a convex set</summary>
+<summary>**Minimizing a dot product over a convex set**</summary>
 <br>
 
 *Consider a convex set $`\mathcal{C}`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Z \rangle`$, minimized over all points $`Z`$ from the set $`\mathcal{C}`$. Find a point $`P`$ that maximizes $`f(P)`$.*
