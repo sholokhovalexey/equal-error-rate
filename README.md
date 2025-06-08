@@ -24,7 +24,7 @@ Let's start from defining a binary classification problem in the framework of Ba
   $p(x|Y=0)$.
 - **Loss function:** 0-1 loss.
 
-where $`x`$ denotes observations and $`Y \in {0, 1}`$ represents a class.
+where $`x`$ denotes observations and $`Y \in \{0, 1\}`$ represents a class.
 
 The **Bayes-optimal decision rule** classifies $`x`$ as class 1 if the **likelihood ratio** exceeds the **Bayes threshold**:
 
