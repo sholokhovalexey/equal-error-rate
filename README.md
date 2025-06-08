@@ -1,6 +1,6 @@
-**TL;DR: this note illustrates a rearly mentioned property of the equal error rate (EER) metric and shows its geometric interpretation.**
+**TL;DR** 🐍: this note discusses a rarely mentioned property of the equal error rate (EER) metric and shows its graphical interpretation.
 
-For the interested reader, refer to [^1], [^2].
+For the interested reader, refer to [^1] and [^2].
 
 ## Definition
 The **Equal Error Rate (EER)** is a performance metric commonly used to evaluate binary classifiers. 
