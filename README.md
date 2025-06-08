@@ -24,6 +24,8 @@ Let's start from defining a binary classification problem in the framework of Ba
   $p(x|Y=0)$.
 - **Loss function:** 0-1 loss.
 
+where $`x`$ denotes observations and $`Y \in {0, 1}`$ represents a class.
+
 The **Bayes-optimal decision rule** classifies $`x`$ as class 1 if the **likelihood ratio** exceeds the **Bayes threshold**:
 
 ```math
@@ -76,6 +78,7 @@ Since a DET curve is convex, the minimum dot product will be achieved at a point
 
 <center><img src="det_curve.gif" width="1200"></center>
 
+Note that a point of the right plot corresponds to a line segment of the convex hull of the empirical DET curve.
 
 ### Derivation using Sion's theorem
 
@@ -195,7 +198,7 @@ This shows that $`\mathrm{BER}(\pi)`$ is **concave** in $`\pi`$, so the critical
 <summary>Minimizing a dot product over a convex set</summary>
 <br>
 
-*Consider a convex set $`\mathcal{C}`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Y \rangle`$, minimized over all points $`Y`$ from the set $`\mathcal{C}`$. Find a point $`P`$ that maximizes $`f(P)`$.*
+*Consider a convex set $`\mathcal{C}`$ and a vector $`P`$ whose endpoint is on a line segment between points $`A`$ and $`B`$. For each $`P`$ we can compute the function $`f(P)`$ that is a dot product $`\langle P, Z \rangle`$, minimized over all points $`Z`$ from the set $`\mathcal{C}`$. Find a point $`P`$ that maximizes $`f(P)`$.*
 
 Let's start from expressing $`P`$ as:
 $`P(\pi) = A + \pi \cdot (B - A)`$, 
@@ -203,20 +206,20 @@ where $`\pi`$ is a number between $`0`$ and $`1`$.
 
 Then, the problem can be formulated as follows:
 
-$`\max_{\pi \in [0,1]}\min_{Y \in \mathcal{C}} \langle P(t), Y \rangle`$
+$`\max_{\pi \in [0,1]}\min_{Z \in \mathcal{C}} \langle P(t), Z \rangle`$
 
-Since $`\mathcal{C}`$ is convex, the minimum dot product over $`Y \in \mathcal{C}`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`\mathcal{C}`$. 
+Since $`\mathcal{C}`$ is convex, the minimum dot product over $`Z \in \mathcal{C}`$ will be achieved at a point where the hyperplane orthogonal to $`P`$ supports the set $`\mathcal{C}`$. 
 
-<center><img src="lp.png" width="500"></center>
+<center><img src="lp.png" width="400"></center>
 
 The objective function for the outer optimization can be rewritten as:
 
-$`f(\pi) = f(P(\pi)) = \min_{Y \in \mathcal{C}} \langle A + \pi \cdot (B - A), Y \rangle = \min_{Y \in \mathcal{C}} \langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$
+$`f(\pi) = f(P(\pi)) = \min_{Z \in \mathcal{C}} \langle A + \pi \cdot (B - A), Z \rangle = \min_{Z \in \mathcal{C}} \langle A, Z \rangle + \pi \cdot \langle B - A, Z \rangle`$
 
-For each fixed $`Y`$, the expression $`\langle A, Y \rangle + \pi \cdot \langle B - A, Y \rangle`$ is a straight line in $`\pi`$. The minimum of a family of straight lines is a **concave** function in $`\pi`$.
-The maximum of $`f(\pi)`$ must occur at a point where the derivative with respect to $`\pi`$ is zero (if such a point exists in $`[0, 1]`$). So, the maximum occurs where $`\langle B - A, Y \rangle = 0`$. 
+For each fixed $`Z`$, the expression $`\langle A, Z \rangle + \pi \cdot \langle B - A, Z \rangle`$ is a straight line in $`\pi`$. The minimum of a family of straight lines is a **concave** function in $`\pi`$.
+The maximum of $`f(\pi)`$ must occur at a point where the derivative with respect to $`\pi`$ is zero (if such a point exists in $`[0, 1]`$). So, the maximum occurs where $`\langle B - A, Z \rangle = 0`$. 
 
-In the 2D case, the condition $`\langle Y, B - A \rangle = 0`$ means that the vector $`Y`$ is perpendicular to the line $`AB`$. 
+In the 2D case, the condition $`\langle Z, B - A \rangle = 0`$ means that the vector $`Z`$ is perpendicular to the line $`AB`$. 
 
 </details>
 
