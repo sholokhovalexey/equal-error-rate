@@ -78,7 +78,7 @@ Since a DET curve is convex, the minimum dot product will be achieved at a point
 
 <center><img src="det_curve.gif" width="1200"></center>
 
-Note that a point of the right plot corresponds to a line segment of the convex hull of the empirical DET curve.
+Note that a point (vertex of the convex hull) on the empirical DET curve may correspond to multiple points on the right plot.
 
 ### Derivation using Sion's theorem
 
